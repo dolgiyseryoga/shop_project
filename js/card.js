@@ -56,7 +56,7 @@ if(event.target.hasAttribute('data-cart')){
 </div>`;
 
 //отобразим товар в корзине
-    cartWrapper.insertAdjacentHTML('beforeend', cartItemHTML);
+   cartWrapper.insertAdjacentHTML('beforeend', cartItemHTML);
     }
 //сбрасываем счетчик товара после добавления в корзину
     card.querySelector('[data-counter]').innerText = '1';
