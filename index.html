@@ -10,17 +10,11 @@
 	<link rel="stylesheet" href="css/main.css">
 	<link href="https://fonts.googleapis.com/css?family=Merriweather:300,400,400i,700&amp;subset=cyrillic-ext"
 		rel="stylesheet">
-
 </head>
 
 <body>
 
 	<header class="header">
-		<div class="container text-center">
-			<img src="img/logo/logo.svg" width="92" alt="Суши и пицца">
-			<div class="display-4">Доставка роллов</div>
-			<p class="lead">Оперативно и вкусно</p>
-		</div>
 	</header>
 
 	<div class="container mb-5">
@@ -63,11 +57,12 @@
 					<!-- Оформить заказ -->
 					<div id="order-form" class="card-body border-top none">
 						<h5 class="card-title">Оформить заказ</h4>
-							<form>
+							<form action="/order.php" method="post">
 								<div class="form-group">
-									<input type="text" class="form-control" placeholder="Ваш номер телефона">
+									<input type="text" class="form-control" name="number"
+										placeholder="Ваш номер телефона">
 								</div>
-								<button type="submit" class="btn btn-primary">Заказать</button>
+								<button type="button" id="SubmitButton" class="btn btn-primary">Заказать</button>
 							</form>
 					</div>
 					<!-- // Оформить заказ -->

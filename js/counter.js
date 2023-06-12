@@ -2,7 +2,7 @@
 window.addEventListener('click', function(event) {
 //объявляем переменную для счетчика
 let counter;
-//проверяем клик строго по кнопкам = или -
+//проверяем клик строго по кнопкам + или -
 if(event.target.dataset.action === 'plus' || event.target.dataset.action === 'minus'){
 //находим обвертку счетчика
     const counterWrapper =  event.target.closest('.counter-wrapper');
@@ -17,6 +17,8 @@ if (event.target.dataset.action === 'plus'){
 if (event.target.dataset.action === 'minus'){
     //проверяем чтобы счетчик был больше 1
     if(parseInt(counter.innerText) > 1){
+
+
     //изменяем текст всчетчике уменьшая его на 1
     counter.innerText =  --counter.innerText;
     //проверка на товар который находится в корзине
@@ -37,3 +39,4 @@ if (event.target.dataset.action === 'minus'){
     calcCartPriceAndDelivery();   
 }
 });
+

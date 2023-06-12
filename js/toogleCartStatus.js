@@ -12,3 +12,4 @@ function toogleCartStatus(){
         orderForm.classList.add('none');
     }
 }
+

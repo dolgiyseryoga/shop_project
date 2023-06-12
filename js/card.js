@@ -1,10 +1,16 @@
 //div внутри корзины, в котором мы добовляем товары
 const cartWrapper = document.querySelector('.cart-wrapper');
 
+//создаем пустой массив для товаров в корзине
+var CardArray = [];
+
+
+
+
 //добовляю прослушку на всем окне
 window.addEventListener('click', function(event) {
 
-//проверяем клик строго по кнопкам = или -
+//проверяем клик строго по кнопкам + или -
 if(event.target.hasAttribute('data-cart')){
     //находим карточку с товаром, внутри которй был клик
     const card = event.target.closest('.card');
@@ -18,16 +24,35 @@ if(event.target.hasAttribute('data-cart')){
         weight: card.querySelector('.price__weight').innerText,
         price: card.querySelector('.price__currency').innerText,
         counter: card.querySelector('[data-counter]').innerText,
+            
     };
 
     //проверем есть ли в корзине такой товар
     const itemInCart =  cartWrapper.querySelector(`[data-id="${productInfo.id}"]`)
 
-    //если  товар есть в корзине
+
+
+    // добовление товаров в массив (тех что в корзине)
+    function AddToCardArray(){
+        CardArray.push(`${productInfo.title},${productInfo.counter},${productInfo.price}`);
+       /* console.log(CardArray);*/
+
+
+
+        
+
+
+        };
+
+
+        
+
+         //если  товар есть в корзине
     if(itemInCart) {
         const counterElement = itemInCart.querySelector('[data-counter]');
         counterElement.innerText = parseInt(counterElement.innerText)+parseInt(productInfo.counter);
-    } else {
+      
+    } else {  AddToCardArray();
     //если товара нет в корзине
 
 //собранные данные подставляем в шаблон для товара в корзине
@@ -43,7 +68,7 @@ if(event.target.hasAttribute('data-cart')){
             <div class="cart-item__details">
                 <div class="items items--small counter-wrapper">
                     <div class="items__control" data-action="minus">-</div>
-                    <div class="items__current" data-counter="">${productInfo.counter}</div>
+                    <div class="items__current current-arr" data-counter="">${productInfo.counter}</div>
                     <div class="items__control" data-action="plus">+</div>
                 </div>
                 <div class="price">
@@ -55,8 +80,10 @@ if(event.target.hasAttribute('data-cart')){
     </div>
 </div>`;
 
+
 //отобразим товар в корзине
    cartWrapper.insertAdjacentHTML('beforeend', cartItemHTML);
+
     }
 //сбрасываем счетчик товара после добавления в корзину
     card.querySelector('[data-counter]').innerText = '1';
@@ -66,6 +93,64 @@ if(event.target.hasAttribute('data-cart')){
 
     //пересчет общей стоимости товаров в корзине
     calcCartPriceAndDelivery();
-
 }
 });
+
+
+    
+document.querySelector("#SubmitButton").onclick = function(){
+
+    const divs = document.querySelectorAll('div.cart-item__title');
+    const divs2 = document.querySelectorAll('div.current-arr');
+    const divs3 = document.querySelectorAll('span.total-price');
+    // Create an empty array to store the data
+    const dataArray_title = [];
+    const dataArray_cerrent = [];
+    const dataArray_price = [];
+    // Loop through each div and extract its text content
+    divs.forEach(div => {
+      const data = div.textContent; /*..trim()*/
+      dataArray_title.push(data);
+    });
+    divs2.forEach(div => {
+        const data = div.textContent;
+        dataArray_cerrent.push(data);
+      });
+      
+divs3.forEach(div => {
+        const data = div.textContent; 
+        dataArray_price.push(data);
+    });
+
+    // Log the resulting array to the console
+    console.log(dataArray_title);
+    console.log(dataArray_cerrent);
+    console.log(dataArray_price);
+
+
+
+/*передача ан пхп
+    const datar = {
+     dataArray_title,
+      dataArray_cerrent,
+       dataArray_price
+    };
+
+    const jsonData = JSON.stringify(datar);
+console.log(jsonData); 
+
+    fetch('../order.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: jsonData    
+      
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error(error));
+*/
+}
+
+  
+
