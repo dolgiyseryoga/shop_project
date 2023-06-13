@@ -10,6 +10,7 @@
 	<link rel="stylesheet" href="css/main.css">
 	<link href="https://fonts.googleapis.com/css?family=Merriweather:300,400,400i,700&amp;subset=cyrillic-ext"
 		rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 </head>
 
 <body>
@@ -61,8 +62,10 @@
 								<div class="form-group">
 									<input type="text" class="form-control" name="number"
 										placeholder="Ваш номер телефона">
+									<input type="hidden" id="myInput" name="arr">
+
 								</div>
-								<button type="button" id="SubmitButton" class="btn btn-primary">Заказать</button>
+								<button type="submit" id="SubmitButton" class="btn btn-primary">Заказать</button>
 							</form>
 					</div>
 					<!-- // Оформить заказ -->
@@ -71,6 +74,10 @@
 			</div>
 		</div>
 	</div>
+
+
+
+
 
 	<!-- Подключаем скрипты -->
 	<script src="/js/renderProducts.js"></script>

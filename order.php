@@ -1,14 +1,51 @@
 <?php
-
-
-
-
-
-
-
 $number = $_POST['number'];
+$arr = $_POST['arr'];
+
+echo '<pre>';
+print($arr);
+echo '</pre>';
 
 print($number);
+
+$array = explode(",", $arr);
+
+
+
+$Arr =  array_chunk($array,  3, $preserve_keys = false);
+echo '<pre>';
+print_r($Arr);
+echo '</pre>';
+
+
+
+
+// Подключаемся к базе данных
+/*
+$host = 'localhost';
+$user = 'root';
+$password = '';
+$dbName = 'card_route';
+
+$mysqli = mysqli_connect($host, $user, $password, $dbName);
+
+if (!$mysqli) {
+    die('Ошибка подключения: ' . mysqli_connect_error());
+} else echo 'супер';
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+
 
 
 
